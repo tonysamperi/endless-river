@@ -1,106 +1,245 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Endlessriver by tonysamperi</title>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Endlessriver</h1>
-      <h2 class="project-tagline">A jQuery content endless scroller!</h2>
-      <a href="https://github.com/tonysamperi/endlessRiver" class="btn">View on GitHub</a>
-      <a href="https://github.com/tonysamperi/endlessRiver/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/tonysamperi/endlessRiver/tarball/master" class="btn">Download .tar.gz</a>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Endless River</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/freelancer.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	<script src="./js/jquery.js" type="text/javascript"></script>
+	
+	<!-- endlessRiver -->
+	<script src="./js/endlessRiver.js" type="text/javascript"></script>
+	
+	<!-- endlessRiver CSS -->
+	<link rel="stylesheet" type="text/css" href="./css/endlessRiver.css" />
+	
+	<!-- endlessRiver boot -->
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$("ul#myList").endlessRiver({speed: 100,buttons: true});
+		});
+	</script>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top">Endless River</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#demo">Demo</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-text">
+                        <span class="name">Endless River</span>
+                        <hr class="star-light">
+                        <span class="skills">A jQuery content scroller</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Demo Section -->
+    <section id="demo">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Demo</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<ul id="myList">
+			<li> | </li>
+			<li style="color: red">Espresso</li>
+			<li style="color: orange">Cappuccino</li>
+			<li style="color: yellow">American</li>
+			<li style="color: green">Tea</li>
+			<li style="color: black">Milk</li>
+			<li style="color: blue">Juice</li>
+			<li> | </li>
+		</ul>
+		<hr />
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Option</th>
+					<th>Description</th>
+					<th>Type</th>
+					<th>Default value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>speed</strong></td>
+					<td>Speed of animations in pixel/second</td>
+					<td>Number</td>
+					<td>100</td>
+				</tr>
+				<tr>
+					<td><strong>pause</strong></td>
+					<td>Pause on hover: if true, scrolling will stop on mouseover</td>
+					<td>Boolean</td>
+					<td>true</td>
+				</tr>
+				<tr>
+					<td><strong>buttons</strong></td>
+					<td>If true, shows play/stop buttons</td>
+					<td>Boolean</td>
+					<td>false</td>
+				</tr>
+			</tbody>
+		</table>
+				</div>
+            </div>
+        </div>
     </section>
 
-    <section class="main-content">
-      <h3>
-<a id="endless-river" class="anchor" href="#endless-river" aria-hidden="true"><span class="octicon octicon-link"></span></a>Endless River</h3>
-
-<p>It's a jQuery plugin, that animates content and make it scroll endlessly!</p>
-
-<p>The usefull feature is that you don't have to set widths to elements, because speed is set in pixel/second!!</p>
-
-<p>EndlessRiver will calculate the best width for the </p> element and keep speed constant!
-
-<h1>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
-
-<p>Simply include the endlessRiver JS and CSS</p>
-
-<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">html</span>&gt;
-    &lt;<span class="pl-ent">head</span>&gt;
-<span class="pl-s1">        &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>path-to/js/endlessRiver.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
-        &lt;<span class="pl-ent">link</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/css<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>path-to/css/endlessRiver.css<span class="pl-pds">"</span></span> /&gt;
-    &lt;/<span class="pl-ent">head</span>&gt;
-&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
-
-<p>Create an &lt;ul&gt; list like this</p>
-
-<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">ul</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>myUl<span class="pl-pds">"</span></span>&gt;
-    &lt;<span class="pl-ent">li</span>&gt; | &lt;/<span class="pl-ent">li</span>&gt;
-    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: red<span class="pl-pds">"</span></span>&gt;Espresso&lt;/<span class="pl-ent">li</span>&gt;
-    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: orange<span class="pl-pds">"</span></span>&gt;Cappuccino&lt;/<span class="pl-ent">li</span>&gt;
-    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: yellow<span class="pl-pds">"</span></span>&gt;American&lt;/<span class="pl-ent">li</span>&gt;
-    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: green<span class="pl-pds">"</span></span>&gt;Tea&lt;/<span class="pl-ent">li</span>&gt;
-    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: black<span class="pl-pds">"</span></span>&gt;Milk&lt;/<span class="pl-ent">li</span>&gt;
-    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: blue<span class="pl-pds">"</span></span>&gt;Juice&lt;/<span class="pl-ent">li</span>&gt;
-    &lt;<span class="pl-ent">li</span>&gt; | &lt;/<span class="pl-ent">li</span>&gt;
-&lt;/<span class="pl-ent">ul</span>&gt;</pre></div>
-
-<p>and call it like this!</p>
-
-<div class="highlight highlight-javascript"><pre>$(<span class="pl-c1">document</span>).ready(<span class="pl-k">function</span>(){
-    $(<span class="pl-s"><span class="pl-pds">"</span>#myUl<span class="pl-pds">"</span></span>).endlessRiver();
-});</pre></div>
-
-<p><strong>Params</strong></p>
-
-<table>
-<thead>
-<tr>
-<th><strong>option</strong></th>
-<th><strong>description</strong></th>
-<th><strong>type</strong></th>
-<th><strong>default</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>speed</td>
-<td>Speed of animations in pixel/second</td>
-<td>Number</td>
-<td>100</td>
-</tr>
-<tr>
-<td>pause</td>
-<td>Pause on hover: if true, scrolling will stop on mouseover</td>
-<td>Boolean</td>
-<td>true</td>
-</tr>
-<tr>
-<td>buttons</td>
-<td>If true, shows play/stop buttons</td>
-<td>Boolean</td>
-<td>false</td>
-</tr>
-</tbody>
-</table>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/tonysamperi/endlessRiver">Endlessriver</a> is maintained by <a href="https://github.com/tonysamperi">tonysamperi</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+					<p>Endless river is a jQuery plugin, that animates content and make it scroll endlessly!</p>
+					<p>The usefull feature is that you don't have to set widths to elements, because speed is set in pixel/second!!</p>
+					<p>EndlessRiver will calculate the best width for the &lt;li&gt; element and keep speed constant!</p>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <a href="#" class="btn btn-lg btn-outline">
+                        <i class="fa fa-download"></i> Download EndlessRiver
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-6">
+                        <h3>Around the Web</h3>
+                        <ul class="list-inline">
+							<li>
+                                <a href="http://flytheweb.it" class="btn-social btn-outline"><i class="fa fa-fw fa-globe"></i></a>
+                            </li>
+                            <li>
+                                <a href="http://facebook.com/flytheweb" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://it.linkedin.com/in/tonysamperi" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="mailto:tony@flytheweb.it" class="btn-social btn-outline"><i class="fa fa-fw fa-paper-plane-o"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-6">
+                        <h3>About Tony Samperi</h3>
+                        <p>I'm a <span id="age"></span> year old frontend developer in Bergamo, Italy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        EndlessRiver created by Tony Samperi (2015)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  
-  </body>
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll visible-xs visible-sm">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+ 
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/freelancer.js"></script>
+
+    <script type="text/javascript">
+        $("#age").html(new Date().getFullYear() - 1989);
+    </script>
+
+</body>
+
 </html>
-

@@ -1,0 +1,28 @@
+/* liScroll styles */
+
+.tickercontainer { /* the outer div with the black border */
+width: 100%; 
+min-height: 50px;
+margin: 0; 
+padding: 0;
+overflow: hidden; 
+}
+/* that serves as a mask. so you get a sort of padding both left and right */
+.tickercontainer .mask { 
+position: relative;
+width: 100%;
+overflow: hidden;
+}
+ul.newsticker { /* that's your list */
+position: relative;
+list-style-type: none;
+margin: 0;
+padding: 0;
+
+}
+/* important: display inline gives incorrect results when you check for elem's width */
+ul.newsticker li {
+float: left; 
+margin: 10px;
+padding: 0;
+}

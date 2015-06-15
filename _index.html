@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Endlessriver by tonysamperi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Endlessriver</h1>
+      <h2 class="project-tagline">A jQuery content endless scroller!</h2>
+      <a href="https://github.com/tonysamperi/endlessRiver" class="btn">View on GitHub</a>
+      <a href="https://github.com/tonysamperi/endlessRiver/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/tonysamperi/endlessRiver/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h3>
+<a id="endless-river" class="anchor" href="#endless-river" aria-hidden="true"><span class="octicon octicon-link"></span></a>Endless River</h3>
+
+<p>It's a jQuery plugin, that animates content and make it scroll endlessly!</p>
+
+<p>The usefull feature is that you don't have to set widths to elements, because speed is set in pixel/second!!</p>
+
+<p>EndlessRiver will calculate the best width for the </p> element and keep speed constant!
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>Simply include the endlessRiver JS and CSS</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">html</span>&gt;
+    &lt;<span class="pl-ent">head</span>&gt;
+<span class="pl-s1">        &lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>path-to/js/endlessRiver.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+        &lt;<span class="pl-ent">link</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/css<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>path-to/css/endlessRiver.css<span class="pl-pds">"</span></span> /&gt;
+    &lt;/<span class="pl-ent">head</span>&gt;
+&lt;/<span class="pl-ent">html</span>&gt;</pre></div>
+
+<p>Create an &lt;ul&gt; list like this</p>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">ul</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>myUl<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt; | &lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: red<span class="pl-pds">"</span></span>&gt;Espresso&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: orange<span class="pl-pds">"</span></span>&gt;Cappuccino&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: yellow<span class="pl-pds">"</span></span>&gt;American&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: green<span class="pl-pds">"</span></span>&gt;Tea&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: black<span class="pl-pds">"</span></span>&gt;Milk&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span> <span class="pl-e">style</span>=<span class="pl-s"><span class="pl-pds">"</span>color: blue<span class="pl-pds">"</span></span>&gt;Juice&lt;/<span class="pl-ent">li</span>&gt;
+    &lt;<span class="pl-ent">li</span>&gt; | &lt;/<span class="pl-ent">li</span>&gt;
+&lt;/<span class="pl-ent">ul</span>&gt;</pre></div>
+
+<p>and call it like this!</p>
+
+<div class="highlight highlight-javascript"><pre>$(<span class="pl-c1">document</span>).ready(<span class="pl-k">function</span>(){
+    $(<span class="pl-s"><span class="pl-pds">"</span>#myUl<span class="pl-pds">"</span></span>).endlessRiver();
+});</pre></div>
+
+<p><strong>Params</strong></p>
+
+<table>
+<thead>
+<tr>
+<th><strong>option</strong></th>
+<th><strong>description</strong></th>
+<th><strong>type</strong></th>
+<th><strong>default</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>speed</td>
+<td>Speed of animations in pixel/second</td>
+<td>Number</td>
+<td>100</td>
+</tr>
+<tr>
+<td>pause</td>
+<td>Pause on hover: if true, scrolling will stop on mouseover</td>
+<td>Boolean</td>
+<td>true</td>
+</tr>
+<tr>
+<td>buttons</td>
+<td>If true, shows play/stop buttons</td>
+<td>Boolean</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/tonysamperi/endlessRiver">Endlessriver</a> is maintained by <a href="https://github.com/tonysamperi">tonysamperi</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
