@@ -1,17 +1,18 @@
 /* liScroll styles */
 
 .tickercontainer { /* the outer div with the black border */
-width: 100%; 
-min-height: 50px;
-margin: 0; 
-padding: 0;
-overflow: hidden; 
+	width: 100%; 
+	min-height: 50px;
+	margin: 0; 
+	padding: 0;
+	overflow: hidden; 
+	text-align: center;
 }
 /* that serves as a mask. so you get a sort of padding both left and right */
 .tickercontainer .mask { 
-position: relative;
-width: 100%;
-overflow: hidden;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
 }
 ul.newsticker { /* that's your list */
 position: relative;
@@ -22,20 +23,24 @@ padding: 0;
 }
 /* important: display inline gives incorrect results when you check for elem's width */
 ul.newsticker li {
-float: left; 
-margin: 10px;
-padding: 0;
+	float: left; 
+	margin: 10px;
+	padding: 0;
 }
 
 ul.er-controls{
 	list-style: none;
+	display: inline-block;
+	padding: 0;
 }
 ul.er-controls > li{
 	display: inline-block;
-	padding: 5px;
+	padding: 0 10px;
 	background: #f0f0f0;
 	margin: 5px;
 	border-radius: 5px;
+	height: 40px;
+	line-height: 40px;
 }
 ul.er-controls > li:hover{
 	background: #f5f5f5;

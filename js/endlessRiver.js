@@ -71,21 +71,24 @@ jQuery.fn.endlessRiver = function (settings) {
 		
 		if(settings.buttons){
 			var $buttons = j('<ul class="er-controls">'+
-			'<li class="prev">prev</li>'+
-			'<li class="pause">pause</li>'+
-			'<li class="play">play</li>'+
-			'<li class="next">next</li>'+
+			'<li class="prev glyphicon glyphicon-chevron-left"></li>'+
+			'<li class="pause glyphicon glyphicon-pause"></li>'+
+			'<li class="next glyphicon glyphicon-chevron-right"></li>'+
 			'</ul>');
 			$buttons.insertAfter($tickercontainer);
 			//DELEGATE IS BETTER!
 			$("body").on("click", "#"+id+" .er-controls > .pause", function(){
 				if(!run) return false;
+				$(this).removeClass("pause glyphicon glyphicon-pause");
+				$(this).addClass("play glyphicon glyphicon-play");
 				$line.unbind('mouseenter mouseleave');
 				run = false;
 			});
 
 			$("body").on("click", "#"+id+" .er-controls > .play", function(){
 				if(run) return false;
+				$(this).removeClass("play glyphicon glyphicon-play");
+				$(this).addClass("pause glyphicon glyphicon-pause");
 				run = true;
 				setHover();
 				var offset = $line.offset().left;
@@ -101,7 +104,7 @@ jQuery.fn.endlessRiver = function (settings) {
 				} 
 				var spazio = $line.children("li:first").outerWidth(true);
         		var tempo = spazio / settings.speed * 1000;
-				$line.stop().animate({left: '-=' + spazio}, tempo, "linear", function () {
+				$line.stop(true,true).animate({left: '-=' + spazio}, tempo, "linear", function () {
                 	$line.children("li:first").appendTo($line);
                 	$line.css("left", 0);
             	});
@@ -117,7 +120,7 @@ jQuery.fn.endlessRiver = function (settings) {
 				$line.css("left", "-"+spazio+"px");
 				$line.children("li:last").prependTo($line);
         		var tempo = spazio / settings.speed * 1000;
-				$line.stop().animate({left: '+=' + spazio}, tempo, "linear");
+				$line.stop(true,true).animate({left: '+=' + spazio}, tempo, "linear");
 				
 			});			
 		}
