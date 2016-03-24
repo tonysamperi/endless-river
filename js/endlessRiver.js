@@ -56,10 +56,12 @@ jQuery.fn.endlessRiver = function (settings) {
 		}
 
 		function pause(){
+			run = false;
 			$line.stop();
 		}
 
 		function resume() {
+			run = true;
 			var offset = $line.offset().left;
 			var residualSpace = offset + $line.children("li:first").outerWidth(true) - initialOffset;
 			var residualTime = currentTempo / currentSpazio * residualSpace;
