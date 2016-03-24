@@ -100,7 +100,7 @@ jQuery.fn.endlessRiver = function (settings) {
 				} 
 				var spazio = $line.children("li:first").outerWidth(true);
         		var tempo = spazio / settings.speed * 1000;
-				$line.animate({left: '-=' + spazio}, tempo, "linear", function () {
+				$line.stop().animate({left: '-=' + spazio}, tempo, "linear", function () {
                 	$line.children("li:first").appendTo($line);
                 	$line.css("left", 0);
             	});
@@ -116,7 +116,7 @@ jQuery.fn.endlessRiver = function (settings) {
 				$line.css("left", "-"+spazio+"px");
 				$line.children("li:last").prependTo($line);
         		var tempo = spazio / settings.speed * 1000;
-				$line.animate({left: '+=' + spazio}, tempo, "linear");
+				$line.stop().animate({left: '+=' + spazio}, tempo, "linear");
 				
 			});			
 		}
