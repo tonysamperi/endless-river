@@ -85,7 +85,6 @@ jQuery.fn.endlessRiver = function (settings) {
 
 			$("body").on("click", "#"+id+" .er-controls > .play", function(){
 				if(run) return false;
-				run = true;
 				setHover();
 				var offset = $line.offset().left;
 				var residualSpace = offset + $line.children("li:first").outerWidth(true) - initialOffset;
