@@ -7,11 +7,14 @@ jQuery.fn.endlessRiver = function (settings) {
     return this.each(function(){
 		var j = jQuery;
         var $line = j(this);
+        var id = "ER_"+ new Date().getTime();
+        $line.wrap("<div id=\""+id+"\"></div>");
 		$line.css({
 			margin: "0 !important",
 			padding: "0 !important"
 		});
         var currentSpazio,currentTempo;
+        var run = true;
         var initialOffset = $line.offset().left;
 		var lineWidth = 1;
         $line.children("li.tick-clones").remove();
@@ -29,7 +32,8 @@ jQuery.fn.endlessRiver = function (settings) {
 			});
 			
 		}
-		while(lineWidth<$tickercontainer.outerWidth(true)) fill();
+		var l = $tickercontainer.outerWidth(true);
+		while(lineWidth<l) fill();
 		$line.width(lineWidth);
         $line.height($line.parent().height());
         function scrollnews(spazio, tempo) {
@@ -38,43 +42,82 @@ jQuery.fn.endlessRiver = function (settings) {
                 $line.css("left", 0);
                 currentSpazio = $line.children("li:first").outerWidth(true);
                 currentTempo = tempo / spazio * currentSpazio;
-                scrollnews(currentSpazio, currentTempo);
+                if(run)
+                	scrollnews(currentSpazio, currentTempo);
             });
         }
+        //BOOT
         currentSpazio = $line.children("li:first").outerWidth(true);
         currentTempo = currentSpazio / settings.speed * 1000;
         //x 1000 perchè tempo è in millisecondi
         scrollnews(currentSpazio, currentTempo);
 		function setHover(){
-			$line.hover(function () {
-				j(this).stop();
-			},
-			function () {
-				var offset = $line.offset().left;
-				var residualSpace = offset + $line.children("li:first").outerWidth(true) - initialOffset;
-				var residualTime = currentTempo / currentSpazio * residualSpace;
-				scrollnews(residualSpace, residualTime);
-			});
+			$line.hover(pause,resume);
+		}
+
+		function pause(){
+			run = false;
+		}
+
+		function resume() {
+			run = true;
+			var offset = $line.offset().left;
+			var residualSpace = offset + $line.children("li:first").outerWidth(true) - initialOffset;
+			var residualTime = currentTempo / currentSpazio * residualSpace;
+			scrollnews(residualSpace, residualTime);
 		}
 		if(settings.pause) setHover();
 		
 		if(settings.buttons){
 			var $buttons = j('<ul class="er-controls">'+
+			'<li class="prev">prev</li>'+
 			'<li class="pause">pause</li>'+
 			'<li class="play">play</li>'+
+			'<li class="next">next</li>'+
 			'</ul>');
 			$buttons.insertAfter($tickercontainer);
-			$buttons.children(".pause").click(function(){
+			//DELEGATE IS BETTER!
+			$("body").on("click", "#"+id+" .er-controls > .pause", function(){
+				if(!run) return false;
 				$line.unbind('mouseenter mouseleave');
-				$line.stop();
+				run = false;
 			});
-			$buttons.children(".play").click(function(){
+
+			$("body").on("click", "#"+id+" .er-controls > .play", function(){
+				if(run) return false;
 				setHover();
 				var offset = $line.offset().left;
 				var residualSpace = offset + $line.children("li:first").outerWidth(true) - initialOffset;
 				var residualTime = currentTempo / currentSpazio * residualSpace;
 				scrollnews(residualSpace, residualTime);
-			});		
+			});
+			
+			$("body").on("click", "#"+id+" .er-controls > .next", function(){
+				if(run){
+					run = false;
+					return;
+				} 
+				var spazio = $line.children("li:first").outerWidth(true);
+        		var tempo = spazio / settings.speed * 1000;
+				$line.animate({left: '-=' + spazio}, tempo, "linear", function () {
+                	$line.children("li:first").appendTo($line);
+                	$line.css("left", 0);
+            	});
+
+            });
+
+			$("body").on("click", "#"+id+" .er-controls > .prev", function(){
+				if(run){	
+					run = false;
+					return;
+				} 
+				var spazio = $line.children("li:last").outerWidth(true);
+				$line.css("left", "-"+spazio+"px");
+				$line.children("li:last").prependTo($line);
+        		var tempo = spazio / settings.speed * 1000;
+				$line.animate({left: '+=' + spazio}, tempo, "linear");
+				
+			});			
 		}
 			
     });

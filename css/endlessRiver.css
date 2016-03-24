@@ -26,3 +26,18 @@ float: left;
 margin: 10px;
 padding: 0;
 }
+
+ul.er-controls{
+	list-style: none;
+}
+ul.er-controls > li{
+	display: inline-block;
+	padding: 5px;
+	background: #f0f0f0;
+	margin: 5px;
+	border-radius: 5px;
+}
+ul.er-controls > li:hover{
+	background: #f5f5f5;
+	cursor: pointer;
+}
