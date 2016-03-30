@@ -70,6 +70,7 @@ jQuery.fn.endlessRiver = function (settings) {
 		if(settings.pause) setHover();
 		
 		if(settings.buttons){
+
 			var $buttons = j('<ul class="er-controls">'+
 			'<li class="prev glyphicon glyphicon-chevron-left"></li>'+
 			'<li class="pause glyphicon glyphicon-pause"></li>'+
@@ -77,18 +78,18 @@ jQuery.fn.endlessRiver = function (settings) {
 			'</ul>');
 			$buttons.insertAfter($tickercontainer);
 			//DELEGATE IS BETTER!
-			$("body").on("click", "#"+id+" .er-controls > .pause", function(){
+			j("body").on("click", "#"+id+" .er-controls > .pause", function(){
 				if(!run) return false;
-				$(this).removeClass("pause glyphicon glyphicon-pause");
-				$(this).addClass("play glyphicon glyphicon-play");
+				j(this).removeClass("pause glyphicon glyphicon-pause");
+				j(this).addClass("play glyphicon glyphicon-play");
 				$line.unbind('mouseenter mouseleave');
 				run = false;
 			});
 
-			$("body").on("click", "#"+id+" .er-controls > .play", function(){
+			j("body").on("click", "#"+id+" .er-controls > .play", function(){
 				if(run) return false;
-				$(this).removeClass("play glyphicon glyphicon-play");
-				$(this).addClass("pause glyphicon glyphicon-pause");
+				j(this).removeClass("play glyphicon glyphicon-play");
+				j(this).addClass("pause glyphicon glyphicon-pause");
 				run = true;
 				setHover();
 				var offset = $line.offset().left;
@@ -97,8 +98,10 @@ jQuery.fn.endlessRiver = function (settings) {
 				scrollnews(residualSpace, residualTime);
 			});
 			
-			$("body").on("click", "#"+id+" .er-controls > .next", function(){
+			j("body").on("click", "#"+id+" .er-controls > .next", function(){
 				if(run){
+					j("#"+id).removeClass("play glyphicon glyphicon-play");
+					j("#"+id).addClass("pause glyphicon glyphicon-pause");
 					run = false;
 					return;
 				} 
@@ -111,8 +114,10 @@ jQuery.fn.endlessRiver = function (settings) {
 
             });
 
-			$("body").on("click", "#"+id+" .er-controls > .prev", function(){
-				if(run){	
+			j("body").on("click", "#"+id+" .er-controls > .prev", function(){
+				if(run){
+					j("#"+id).removeClass("play glyphicon glyphicon-play");
+					j("#"+id).addClass("pause glyphicon glyphicon-pause");
 					run = false;
 					return;
 				} 
