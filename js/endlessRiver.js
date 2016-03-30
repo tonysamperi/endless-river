@@ -70,6 +70,7 @@ jQuery.fn.endlessRiver = function (settings) {
 		if(settings.pause) setHover();
 		
 		if(settings.buttons){
+
 			var $buttons = j('<ul class="er-controls">'+
 			'<li class="prev glyphicon glyphicon-chevron-left"></li>'+
 			'<li class="pause glyphicon glyphicon-pause"></li>'+
@@ -77,18 +78,16 @@ jQuery.fn.endlessRiver = function (settings) {
 			'</ul>');
 			$buttons.insertAfter($tickercontainer);
 			//DELEGATE IS BETTER!
-			$("body").on("click", "#"+id+" .er-controls > .pause", function(){
+			j("body").on("click", "#"+id+" .er-controls > .pause", function(){
 				if(!run) return false;
-				$(this).removeClass("pause glyphicon glyphicon-pause");
-				$(this).addClass("play glyphicon glyphicon-play");
+				j(this).toggleClass("pause glyphicon-pause play glyphicon-play");
 				$line.unbind('mouseenter mouseleave');
 				run = false;
 			});
 
-			$("body").on("click", "#"+id+" .er-controls > .play", function(){
+			j("body").on("click", "#"+id+" .er-controls > .play", function(){
 				if(run) return false;
-				$(this).removeClass("play glyphicon glyphicon-play");
-				$(this).addClass("pause glyphicon glyphicon-pause");
+				j(this).toggleClass("pause glyphicon-pause play glyphicon-play");
 				run = true;
 				setHover();
 				var offset = $line.offset().left;
@@ -96,31 +95,42 @@ jQuery.fn.endlessRiver = function (settings) {
 				var residualTime = currentTempo / currentSpazio * residualSpace;
 				scrollnews(residualSpace, residualTime);
 			});
+
+			var moving = false;
 			
-			$("body").on("click", "#"+id+" .er-controls > .next", function(){
+			j("body").on("click", "#"+id+" .er-controls > .next", function(){
 				if(run){
+					j("#"+id+" .er-controls > .pause").toggleClass("pause glyphicon-pause play glyphicon-play");
 					run = false;
 					return;
-				} 
+				}
+				if(moving) return false;
 				var spazio = $line.children("li:first").outerWidth(true);
         		var tempo = spazio / settings.speed * 1000;
+        		moving = true;
 				$line.stop(true,true).animate({left: '-=' + spazio}, tempo, "linear", function () {
                 	$line.children("li:first").appendTo($line);
                 	$line.css("left", 0);
+                	moving = false;
             	});
 
             });
 
-			$("body").on("click", "#"+id+" .er-controls > .prev", function(){
-				if(run){	
+			j("body").on("click", "#"+id+" .er-controls > .prev", function(){
+				if(run){
+					j("#"+id+" .er-controls > .pause").toggleClass("pause glyphicon-pause play glyphicon-play");
 					run = false;
 					return;
 				} 
+				if(moving) return false;
 				var spazio = $line.children("li:last").outerWidth(true);
 				$line.css("left", "-"+spazio+"px");
 				$line.children("li:last").prependTo($line);
         		var tempo = spazio / settings.speed * 1000;
-				$line.stop(true,true).animate({left: '+=' + spazio}, tempo, "linear");
+        		moving = true;
+				$line.stop(true,true).animate({left: '+=' + spazio}, tempo, "linear", function(){
+					moving = false;
+				});
 				
 			});			
 		}
