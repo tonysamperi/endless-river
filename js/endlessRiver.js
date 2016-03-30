@@ -80,16 +80,14 @@ jQuery.fn.endlessRiver = function (settings) {
 			//DELEGATE IS BETTER!
 			j("body").on("click", "#"+id+" .er-controls > .pause", function(){
 				if(!run) return false;
-				j(this).removeClass("pause glyphicon glyphicon-pause");
-				j(this).addClass("play glyphicon glyphicon-play");
+				j(this).toggleClass("pause glyphicon-pause play glyphicon-play");
 				$line.unbind('mouseenter mouseleave');
 				run = false;
 			});
 
 			j("body").on("click", "#"+id+" .er-controls > .play", function(){
 				if(run) return false;
-				j(this).removeClass("play glyphicon glyphicon-play");
-				j(this).addClass("pause glyphicon glyphicon-pause");
+				j(this).toggleClass("pause glyphicon-pause play glyphicon-play");
 				run = true;
 				setHover();
 				var offset = $line.offset().left;
@@ -97,35 +95,42 @@ jQuery.fn.endlessRiver = function (settings) {
 				var residualTime = currentTempo / currentSpazio * residualSpace;
 				scrollnews(residualSpace, residualTime);
 			});
+
+			var moving = false;
 			
 			j("body").on("click", "#"+id+" .er-controls > .next", function(){
 				if(run){
-					j("#"+id).removeClass("play glyphicon glyphicon-play");
-					j("#"+id).addClass("pause glyphicon glyphicon-pause");
+					j("#"+id+" .er-controls > .pause").toggleClass("pause glyphicon-pause play glyphicon-play");
 					run = false;
 					return;
-				} 
+				}
+				if(moving) return false;
 				var spazio = $line.children("li:first").outerWidth(true);
         		var tempo = spazio / settings.speed * 1000;
+        		moving = true;
 				$line.stop(true,true).animate({left: '-=' + spazio}, tempo, "linear", function () {
                 	$line.children("li:first").appendTo($line);
                 	$line.css("left", 0);
+                	moving = false;
             	});
 
             });
 
 			j("body").on("click", "#"+id+" .er-controls > .prev", function(){
 				if(run){
-					j("#"+id).removeClass("play glyphicon glyphicon-play");
-					j("#"+id).addClass("pause glyphicon glyphicon-pause");
+					j("#"+id+" .er-controls > .pause").toggleClass("pause glyphicon-pause play glyphicon-play");
 					run = false;
 					return;
 				} 
+				if(moving) return false;
 				var spazio = $line.children("li:last").outerWidth(true);
 				$line.css("left", "-"+spazio+"px");
 				$line.children("li:last").prependTo($line);
         		var tempo = spazio / settings.speed * 1000;
-				$line.stop(true,true).animate({left: '+=' + spazio}, tempo, "linear");
+        		moving = true;
+				$line.stop(true,true).animate({left: '+=' + spazio}, tempo, "linear", function(){
+					moving = false;
+				});
 				
 			});			
 		}
