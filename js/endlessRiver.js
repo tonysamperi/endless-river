@@ -52,6 +52,7 @@ jQuery.fn.endlessRiver = function (settings) {
         //x 1000 perchè tempo è in millisecondi
         scrollnews(currentSpazio, currentTempo);
 		function setHover(){
+			$line.off( "mouseenter mouseleave" );
 			$line.hover(pause,resume);
 		}
 
