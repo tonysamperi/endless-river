@@ -57,11 +57,15 @@ jQuery.fn.endlessRiver = function (settings) {
 		}
 
 		function pause(){
+			j(this).removeClass("play glyphicon-play");
+			j(this).addClass("pause glyphicon-pause");
 			run = false;
 			$line.stop();
 		}
 
 		function resume() {
+			j(this).addClass("play glyphicon-play");
+			j(this).removeClass("pause glyphicon-pause");
 			run = true;
 			var offset = $line.offset().left;
 			var residualSpace = offset + $line.children("li:first").outerWidth(true) - initialOffset;
@@ -82,7 +86,7 @@ jQuery.fn.endlessRiver = function (settings) {
 			j("body").on("click", "#"+id+" .er-controls > .pause", function(){
 				if(!run) return false;
 				j(this).toggleClass("pause glyphicon-pause play glyphicon-play");
-				$line.unbind('mouseenter mouseleave');
+				$line.off('mouseenter mouseleave');
 				run = false;
 			});
 
