@@ -2,7 +2,8 @@ jQuery.fn.endlessRiver = function (settings) {
     settings = jQuery.extend({
         speed: 100,
 		pause: true,
-		buttons: false
+		buttons: false,
+		startOffScreen: false
     }, settings);
     return this.each(function(){
 		var j = jQuery;
@@ -23,6 +24,9 @@ jQuery.fn.endlessRiver = function (settings) {
         var $mask = $line.wrap("<div class='mask'></div>");
         var $tickercontainer = $line.parent().wrap("<div class='tickercontainer'></div>");
 		var elements = $line.children("li");
+		if(settings.startOffScreen) {
+			$(elements[0]).css("padding-left", $($tickercontainer).width() + 'px');
+		}
 		var fill = function(){
 			lineWidth = 1;
 			$line.append(elements.clone(true).addClass("tick-clones"));

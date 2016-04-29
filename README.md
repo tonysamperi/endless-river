@@ -60,6 +60,7 @@ $(document).ready(function(){
 |speed|Speed of animations in pixel/second|Number|100|
 |pause|Pause on hover: if true, scrolling will stop on mouseover|Boolean|true|
 |buttons|If true, shows play/stop buttons|Boolean|false|
+|startOffScreen|If true, starts the ticker outside of the ticker container|Boolean|false|
 
 # License
 
