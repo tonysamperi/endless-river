@@ -1,0 +1,39 @@
+{
+  "name": "endlessRiver",
+  "version": "2.0.0",
+  "description": "A jQuery content scroller (marquee alternative)!",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:lib": "gulp build:lib",
+    "publish:lib": "npm publish dist"
+  },
+  "devDependencies": {
+    "fs-extra": "^7.0.1",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.0",
+    "path": "^0.12.7",
+    "pump": "^3.0.0",
+    "run-sequence": "^2.2.1",
+    "uglify-js": "^3.4.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonysamperi/endless-river"
+  },
+  "keywords": [
+    "marquee",
+    "jQuery",
+    "content scroller",
+    "ticker",
+    "infinite scroll"
+  ],
+  "author": "Tony Samperi <github@tonysamperi.it> (tonysamperi.github.io)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tonysamperi/endless-river/issues"
+  },
+  "homepage": "https://github.com/tonysamperi/endless-river#readme"
+}

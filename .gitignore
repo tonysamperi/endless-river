@@ -1,5 +1,9 @@
-#project folders to ignore
-demo
+# dev folders to ignore
+node_modules
+dist
+
+# JetBrains
+.idea
 
 # Windows image file caches
 Thumbs.db

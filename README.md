@@ -1,4 +1,4 @@
-EndlessRiver
+EndlessRiver v 2.0.0
 ============
 
 A **jQuery** content scroller!
@@ -22,14 +22,20 @@ EndlessRiver will calculate the best width for the &lt;li&gt; element and keep s
 
 The only requirement needed is [jQuery](https://jquery.com/download/) that you can install it via [Bower](http://bower.io/).
 
+# Installation
+
+You can download the source files, or install via *npm* by running
+
+`npm i endlessRiver`
+
 # Usage
 
 Simply include the endlessRiver JS and CSS
 ```html
 <html>
     <head>
-        <script type="text/javascript" src="path-to/js/endlessRiver.js"></script>
-        <link type="text/css" rel="stylesheet" href="path-to/css/endlessRiver.css" />
+        <script type="text/javascript" src="path-to/js/endless-river.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="path-to/css/endless-river.min.css" />
     </head>
 </html>
 ```
@@ -60,6 +66,15 @@ $(document).ready(function(){
 |speed|Speed of animations in pixel/second|Number|100|
 |pause|Pause on hover: if true, scrolling will stop on mouseover|Boolean|true|
 |buttons|If true, shows play/stop buttons|Boolean|false|
+
+# Changelog
+
+## v 2.0.0
+* files renamed to kebab-case
+* code refactored
+* added gulpfile
+* added minified files
+* added demo page
 
 # License
 
